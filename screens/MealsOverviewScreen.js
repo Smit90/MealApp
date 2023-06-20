@@ -5,6 +5,8 @@ import { useLayoutEffect } from "react";
 
 function MealsOverviewScreen({ route, navigation }) {
   const catId = route.params.categoryId;
+  const color = route.params.color;
+  const secondaryColor = route.params.secondaryColor;
 
   const displayedMeals = MEALS.filter((mealItem) => {
     return mealItem.categoryIds.indexOf(catId) >= 0;
@@ -15,7 +17,16 @@ function MealsOverviewScreen({ route, navigation }) {
       (category) => category.id === catId
     ).title;
 
-    navigation.setOptions({ title: categoryTitle });
+    navigation.setOptions({
+      title: categoryTitle,
+      headerStyle: {
+        backgroundColor: color,
+      },
+      headerTintColor: "white",
+      contentStyle: {
+        backgroundColor: secondaryColor,
+      },
+    });
   }, [catId, navigation]);
 
   function renderMealItem(itemData) {

@@ -7,6 +7,8 @@ function CategoriesScreen({ navigation }) {
     function pressHandler() {
       navigation.navigate("MealsOverview", {
         categoryId: itemData.item.id,
+        color: itemData.item.color,
+        secondaryColor: itemData.item.secondaryColor,
       });
     }
     return (
